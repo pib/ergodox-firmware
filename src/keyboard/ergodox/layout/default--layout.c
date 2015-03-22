@@ -14,6 +14,20 @@
 #include "../matrix.h"
 #include "../layout.h"
 // FUNCTIONS ------------------------------------------------------------------
+
+/*
+ * [name]
+ *   Ctrl + press|release
+ *
+ * [description]
+ *   Generate a 'ctrl' press or release before the normal keypress or
+ *   keyrelease
+ */
+void kbfun_ctrl_press_release(void) {
+	_kbfun_press_release(IS_PRESSED, KEY_LeftControl);
+	kbfun_press_release();
+}
+
 void kbfun_layer_pop_all(void) {
   kbfun_layer_pop_1();
   kbfun_layer_pop_2();
@@ -53,6 +67,7 @@ void kbfun_layer_pop_all(void) {
 #define  lpop9    &kbfun_layer_pop_9
 #define  lpop10   &kbfun_layer_pop_10
 #define  dbtldr   &kbfun_jump_to_bootloader
+#define  ctrlpr   &kbfun_ctrl_press_release
 #define  sshprre  &kbfun_shift_press_release
 #define  s2kcap   &kbfun_2_keys_capslock_press_release
 #define  slpunum  &kbfun_layer_push_numpad
@@ -70,7 +85,7 @@ KB_MATRIX_LAYER(
 	KEY_LeftAlt,	KEY_q_Q,	KEY_d_D,	KEY_r_R,	KEY_w_W,	KEY_b_B,	KEY_GraveAccent_Tilde,	
 	KEY_LeftControl,	KEY_a_A,	KEY_s_S,	KEY_h_H,	KEY_t_T,	KEY_g_G,	
 	KEY_LeftShift,	KEY_z_Z,	KEY_x_X,	KEY_m_M,	KEY_c_C,	KEY_v_V,	KEY_Tab,	
-	KEY_Mute,	KEY_Undo,	KEY_Cut,	KEY_Copy,	KEY_Paste,	
+	KEY_Mute,	KEY_z_Z,	KEY_x_X,	KEY_c_C,	KEY_v_V,
 	KEY_PrintScreen,	1,	
 	0,	0,	KEY_F11,	
 	KEY_DeleteBackspace,	KEY_LeftShift,	KEY_DeleteForward,	
@@ -305,7 +320,7 @@ KB_MATRIX_LAYER(
 	kprrel,	kprrel,	kprrel,	kprrel,	kprrel,	kprrel,	kprrel,	
 	kprrel,	kprrel,	kprrel,	kprrel,	kprrel,	kprrel,	
 	kprrel,	kprrel,	kprrel,	kprrel,	kprrel,	kprrel,	kprrel,	
-	kprrel,	kprrel,	kprrel,	kprrel,	kprrel,	
+	kprrel,	ctrlpr,	ctrlpr,	ctrlpr,	ctrlpr,
 	kprrel,	lpush1,	
 	NULL,	NULL,	kprrel,	
 	kprrel,	kprrel,	kprrel,	
@@ -540,7 +555,7 @@ KB_MATRIX_LAYER(
 	kprrel,	kprrel,	kprrel,	kprrel,	kprrel,	kprrel,	kprrel,	
 	kprrel,	kprrel,	kprrel,	kprrel,	kprrel,	kprrel,	
 	kprrel,	kprrel,	kprrel,	kprrel,	kprrel,	kprrel,	kprrel,	
-	kprrel,	kprrel,	kprrel,	kprrel,	kprrel,	
+	kprrel,	ctrlpr,	ctrlpr,	ctrlpr,	ctrlpr,
 	kprrel,	NULL,
 	NULL,	NULL,	kprrel,	
 	kprrel,	kprrel,	kprrel,	
