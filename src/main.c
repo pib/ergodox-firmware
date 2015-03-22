@@ -24,6 +24,7 @@
 
 // ----------------------------------------------------------------------------
 
+uint8_t       layers_head = 0;
 static bool _main_kb_is_pressed[KB_ROWS][KB_COLUMNS];
 bool (*main_kb_is_pressed)[KB_ROWS][KB_COLUMNS] = &_main_kb_is_pressed;
 
@@ -177,7 +178,6 @@ struct layers {
 // ----------------------------------------------------------------------------
 
 struct layers layers[MAX_ACTIVE_LAYERS];
-uint8_t       layers_head = 0;
 uint8_t       layers_ids_in_use[MAX_ACTIVE_LAYERS] = {true};
 
 /*
