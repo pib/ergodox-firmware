@@ -45,6 +45,19 @@ void kbfun_shift_press_release(void) {
 
 /*
  * [name]
+ *   Ctrl + press|release
+ *
+ * [description]
+ *   Generate a 'ctrl' press or release before the normal keypress or
+ *   keyrelease
+ */
+void kbfun_ctrl_press_release(void) {
+	_kbfun_press_release(IS_PRESSED, KEY_LeftControl);
+	kbfun_press_release();
+}
+
+/*
+ * [name]
  *   Two keys => capslock
  *
  * [description]
