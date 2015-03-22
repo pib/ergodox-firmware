@@ -54,6 +54,10 @@ bool    main_arg_trans_key_pressed;
 int main(void) {
 	kb_init();  // does controller initialization too
 
+        // Set pin as output
+	PORTD &= ~(1<<6);
+	DDRD |= (1<<6);
+
 	kb_led_state_power_on();
 
 	usb_init();
@@ -86,6 +90,11 @@ int main(void) {
 		#define is_pressed   main_arg_is_pressed
 		#define was_pressed  main_arg_was_pressed
 		for (row=0; row<KB_ROWS; row++) {
+			if (layers_head != 0)
+				_kb_led_6_on(); // layer led on
+			else
+				_kb_led_6_off(); // layer led off
+
 			for (col=0; col<KB_COLUMNS; col++) {
 				is_pressed = (*main_kb_is_pressed)[row][col];
 				was_pressed = (*main_kb_was_pressed)[row][col];
